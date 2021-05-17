@@ -1,0 +1,43 @@
+.movie-summary {
+  width: 90%;
+}
+
+.movie-summary .poster {
+  z-index: 10;
+}
+
+.movie-summary .poster img {
+  border-radius: 1.5rem;
+  display: none;
+  width: 300px;
+}
+
+.movie-summary .info {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+.movie-summary .info .facts > * {
+  min-width: 50%;
+}
+
+@media (min-width: 768px) {
+  .movie-summary .poster img {
+    display: block;
+  }
+
+  .movie-summary .info {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -2rem;
+    padding-left: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-summary .info .facts > * {
+    min-width: 25%;
+  }
+}

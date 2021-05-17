@@ -1,0 +1,21 @@
+.person .wrapper {
+  box-shadow: 0px 0px 10px 2px lightgrey;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.person img,
+.person .no-image {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.person img {
+  object-fit: cover;
+}
+
+.person .no-image {
+  background-color: black;
+  color: white;
+}

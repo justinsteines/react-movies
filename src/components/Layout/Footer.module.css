@@ -1,0 +1,9 @@
+.footer {
+  background-color: var(--bg-primary);
+  color: white;
+  font-size: 14px;
+}
+
+.footer .logo {
+  height: 1rem;
+}

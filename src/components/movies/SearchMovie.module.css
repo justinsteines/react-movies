@@ -1,0 +1,15 @@
+.search-movie {
+  background-color: var(--bg-primary);
+}
+
+.search-movie .input-container,
+.search-movie input {
+  border-radius: 1.2rem;
+  background-color: var(--bg-secondary);
+}
+
+.search-movie input {
+  outline: none;
+  border: none;
+  color: white;
+}

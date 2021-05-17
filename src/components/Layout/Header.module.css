@@ -1,0 +1,14 @@
+.header {
+  background-color: var(--bg-primary);
+  color: white;
+}
+
+.header a {
+  text-decoration: none;
+  color: white
+}
+
+.header a:hover,
+.header a:active {
+  color: white;
+}
