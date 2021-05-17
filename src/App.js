@@ -9,15 +9,9 @@ const App = (props) => {
   return (
     <Layout>
       <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/movie/:movieId">
-          <MovieDetailPage />
-        </Route>
-        <Route path="/error">
-          <ErrorPage />
-        </Route>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/movie/:movieId" component={MovieDetailPage} />
+        <Route path="/error" component={ErrorPage} />
       </Switch>
     </Layout>
   );

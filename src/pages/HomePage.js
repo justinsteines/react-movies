@@ -22,23 +22,28 @@ const HomePage = (props) => {
   };
 
   useEffect(() => {
-    const queryParams = new URLSearchParams({
-      language: 'en-US',
-      page: 1,
-      action: 'movie-popular',
-    });
-
-    setIsLoading(true);
-    fetch(`${process.env.REACT_APP_TMDB_BASE_URL}?${queryParams.toString()}`)
-      .then((res) => res.json())
-      .then((movies) => {
-        setIsLoading(false);
-        setPopularMovies(movies.results);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setError(err);
+    if (localStorage.getItem('popularMovies')) {
+      setPopularMovies(JSON.parse(localStorage.getItem('popularMovies')));
+    } else {
+      const queryParams = new URLSearchParams({
+        language: 'en-US',
+        page: 1,
+        action: 'movie-popular',
       });
+
+      setIsLoading(true);
+      fetch(`${process.env.REACT_APP_TMDB_BASE_URL}?${queryParams.toString()}`)
+        .then((res) => res.json())
+        .then((movies) => {
+          setIsLoading(false);
+          setPopularMovies(movies.results);
+          localStorage.setItem('popularMovies', JSON.stringify(movies.results));
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+        });
+    }
   }, []);
 
   useEffect(() => {

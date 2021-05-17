@@ -18,28 +18,49 @@ const MovieDetailPage = (props) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams({
-      language: 'en-US',
-      append_to_response: 'credits,videos',
-      action: 'movie',
-      movieId: params.movieId,
-    });
-
-    setIsLoading(true);
-    fetch(`${process.env.REACT_APP_TMDB_BASE_URL}?${queryParams.toString()}`)
-      .then((res) => res.json())
-      .then((movie) => {
-        setIsLoading(false);
-        setMovie(movie);
-        setCast(movie.credits.cast);
-        if (movie.videos.results.length > 0 && movie.videos.results[0].key) {
-          setSelectedVideo(movie.videos.results[0].key);
-        }
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setError(err);
+    if (
+      localStorage.getItem(params.movieId + '/movie') &&
+      localStorage.getItem(params.movieId + '/cast')
+    ) {
+      const m = JSON.parse(localStorage.getItem(params.movieId + '/movie'));
+      const c = JSON.parse(localStorage.getItem(params.movieId + '/cast'));
+      setMovie(m);
+      setCast(c);
+      if (m.videos.results.length > 0 && m.videos.results[0].key) {
+        setSelectedVideo(m.videos.results[0].key);
+      }
+    } else {
+      const queryParams = new URLSearchParams({
+        language: 'en-US',
+        append_to_response: 'credits,videos',
+        action: 'movie',
+        movieId: params.movieId,
       });
+
+      setIsLoading(true);
+      fetch(`${process.env.REACT_APP_TMDB_BASE_URL}?${queryParams.toString()}`)
+        .then((res) => res.json())
+        .then((movie) => {
+          setIsLoading(false);
+          setMovie(movie);
+          setCast(movie.credits.cast);
+          localStorage.setItem(
+            params.movieId + '/movie',
+            JSON.stringify(movie)
+          );
+          localStorage.setItem(
+            params.movieId + '/cast',
+            JSON.stringify(movie.credits.cast)
+          );
+          if (movie.videos.results.length > 0 && movie.videos.results[0].key) {
+            setSelectedVideo(movie.videos.results[0].key);
+          }
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
+        });
+    }
   }, [params]);
 
   const selectedVideoHandler = (videoKey) => {

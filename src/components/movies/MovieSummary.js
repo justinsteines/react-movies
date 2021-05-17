@@ -22,14 +22,13 @@ const MovieSummary = (props) => {
         <div className={classes.poster}>
           <img
             src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_ORIGINAL}${props.poster_path}`}
-            alt=""
+            alt={props.title}
           />
         </div>
       )}
       <div className={`${classes.info} d-flex flex-column`}>
         <div className="fs-1">{props.title}</div>
         <div className={`${classes.overview} mt-4`}>{props.overview}</div>
-        {/* <div className="row row-cols-2 row-cols-lg-4 mt-auto gy-4"> */}
         <div className={`${classes.facts} d-flex flex-wrap mt-auto`}>
           <div className="flex-grow-1 d-flex flex-column align-items-center text-center d-none d-md-flex pt-3">
             <div className="fs-6">
