@@ -5,7 +5,7 @@ const Splash = (props) => {
     <div className={classes.splash}>
       {props.src && (
         <img
-          src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_ORIGINAL}${props.src}`}
+          src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_1280}${props.src}`}
           alt={props.alt}
         />
       )}

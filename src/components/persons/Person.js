@@ -6,7 +6,7 @@ const Person = (props) => {
       <div className={`${classes.wrapper} d-flex flex-column`}>
         {props.profile_path && (
           <img
-            src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_ORIGINAL}${props.profile_path}`}
+            src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_500}${props.profile_path}`}
             alt={props.name}
           />
         )}

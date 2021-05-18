@@ -21,7 +21,7 @@ const MovieSummary = (props) => {
       {props.poster_path && (
         <div className={classes.poster}>
           <img
-            src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_ORIGINAL}${props.poster_path}`}
+            src={`${process.env.REACT_APP_TMDB_BASE_IMAGE_URL_500}${props.poster_path}`}
             alt={props.title}
           />
         </div>
