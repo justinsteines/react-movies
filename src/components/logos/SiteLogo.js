@@ -8,7 +8,7 @@ const SiteLogo = (props) => {
     <Link to="/" className={classes.logo}>
       <div className="d-flex align-items-center">
         <Film size={48} className="me-3" />
-        <span>Movies</span>
+        <span>React Movies</span>
       </div>
     </Link>
   );
